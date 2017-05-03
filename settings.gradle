@@ -1,0 +1,1 @@
+include ':gloablelibrary', ':smssdk', ':sharesdk', ':paysdk', ':app', ':baidupaysdk'
