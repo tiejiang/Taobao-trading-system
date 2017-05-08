@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/MyApplication.iml" filepath="$PROJECT_DIR$/MyApplication.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MyApplicationForTaoElec.iml" filepath="$PROJECT_DIR$/MyApplicationForTaoElec.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/baidupaysdk/baidupaysdk.iml" filepath="$PROJECT_DIR$/baidupaysdk/baidupaysdk.iml" />
       <module fileurl="file://$PROJECT_DIR$/gloablelibrary/gloablelibrary.iml" filepath="$PROJECT_DIR$/gloablelibrary/gloablelibrary.iml" />
