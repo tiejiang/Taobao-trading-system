@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="cniao5.com.cniao5shop">
+    package="zhijian.com.taobaobishe">
 
     <!-- if you want to load images from the internet -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -24,13 +24,13 @@
     <uses-permission android:name="android.permission.READ_SMS" />
 
     <application
-        android:name=".CniaoApplication"
+        android:name="zhijian.com.taobaobishe.CniaoApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name="zhijian.com.taobaobishe.MainActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,11 +40,11 @@
         </activity>
 
         <!-- <activity android:name=".TestActvity"></activity> -->
-        <activity android:name=".WareListActivity" />
+        <activity android:name="zhijian.com.taobaobishe.WareListActivity" />
         <activity
-            android:name=".WareDetailActivity"
+            android:name="zhijian.com.taobaobishe.WareDetailActivity"
             android:label="@string/title_activity_ware_detail" />
-        <activity android:name=".LoginActivity" />
+        <activity android:name="zhijian.com.taobaobishe.LoginActivity" />
         <activity
             android:name="com.mob.tools.MobUIShell"
             android:configChanges="keyboardHidden|orientation|screenSize"
@@ -60,14 +60,14 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".CreateOrderActivity" />
-        <activity android:name=".PayResultActivity" />
+        <activity android:name="zhijian.com.taobaobishe.CreateOrderActivity" />
+        <activity android:name="zhijian.com.taobaobishe.PayResultActivity" />
         <activity
-            android:name=".RegActivity"
+            android:name="zhijian.com.taobaobishe.RegActivity"
             android:label="@string/title_activity_reg" />
-        <activity android:name=".RegSecondActivity" />
-        <activity android:name=".AddressListActivity" />
-        <activity android:name=".AddressAddActivity" />
+        <activity android:name="zhijian.com.taobaobishe.RegSecondActivity" />
+        <activity android:name="zhijian.com.taobaobishe.AddressListActivity" />
+        <activity android:name="zhijian.com.taobaobishe.AddressAddActivity" />
 
         <!-- Ping++ sdk -->
         <activity
@@ -243,9 +243,9 @@
             android:name="mob_sms_appSecrect"
             android:value="e73deba501fb3faaa1b5c2729e3eedbe" />
 
-        <activity android:name=".MyOrderActivity" />
-        <activity android:name=".OrderDetailActivity" />
-        <activity android:name=".MyFavoriteActivity"></activity>
+        <activity android:name="zhijian.com.taobaobishe.MyOrderActivity" />
+        <activity android:name="zhijian.com.taobaobishe.OrderDetailActivity" />
+        <activity android:name="zhijian.com.taobaobishe.MyFavoriteActivity"></activity>
     </application>
 
 </manifest>

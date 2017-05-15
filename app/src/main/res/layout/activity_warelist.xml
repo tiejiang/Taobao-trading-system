@@ -7,7 +7,7 @@
     android:background="@color/bg_color">
 
 
-    <cniao5.com.cniao5shop.widget.CNiaoToolBar
+    <zhijian.com.taobaobishe.widget.CNiaoToolBar
         android:id="@id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,7 +18,7 @@
         app:contentInsetEnd="56dp"
         app:title="商品列表">
 
-    </cniao5.com.cniao5shop.widget.CNiaoToolBar>
+    </zhijian.com.taobaobishe.widget.CNiaoToolBar>
 
     <android.support.design.widget.TabLayout
         android:id="@+id/tab_layout"

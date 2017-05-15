@@ -6,9 +6,9 @@
     android:orientation="vertical"
     android:background="@color/bg_color"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="cniao5.com.cniao5shop.MyOrderActivity">
+    tools:context="zhijian.com.taobaobishe.MyOrderActivity">
 
-    <cniao5.com.cniao5shop.widget.CNiaoToolBar
+    <zhijian.com.taobaobishe.widget.CNiaoToolBar
         android:id="@id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

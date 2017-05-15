@@ -3,13 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="cniao5.com.cniao5shop.RegSecondActivity"
+    tools:context="zhijian.com.taobaobishe.RegSecondActivity"
     android:orientation="vertical"
     android:background="@color/bg_color">
 
 
 
-    <cniao5.com.cniao5shop.widget.CNiaoToolBar
+    <zhijian.com.taobaobishe.widget.CNiaoToolBar
         android:id="@id/toolbar"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
@@ -52,7 +52,7 @@
 
             >
 
-        <cniao5.com.cniao5shop.widget.ClearEditText
+        <zhijian.com.taobaobishe.widget.ClearEditText
             android:id="@+id/edittxt_code"
             android:layout_width="0dp"
             android:layout_weight="1"

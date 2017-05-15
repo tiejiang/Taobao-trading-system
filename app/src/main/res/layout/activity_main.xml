@@ -19,7 +19,7 @@
         />
 
 
-    <cniao5.com.cniao5shop.widget.FragmentTabHost
+    <zhijian.com.taobaobishe.widget.FragmentTabHost
         android:id="@android:id/tabhost"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -31,7 +31,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_weight="0" />
-    </cniao5.com.cniao5shop.widget.FragmentTabHost>
+    </zhijian.com.taobaobishe.widget.FragmentTabHost>
 
 
 

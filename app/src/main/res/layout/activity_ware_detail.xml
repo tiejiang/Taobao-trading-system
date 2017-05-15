@@ -4,10 +4,10 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context="cniao5.com.cniao5shop.WareDetailActivity">
+    tools:context="zhijian.com.taobaobishe.WareDetailActivity">
 
 
-    <cniao5.com.cniao5shop.widget.CNiaoToolBar
+    <zhijian.com.taobaobishe.widget.CNiaoToolBar
         android:id="@id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,7 +18,7 @@
         app:contentInsetEnd="56dp"
         app:title="商品详情">
 
-    </cniao5.com.cniao5shop.widget.CNiaoToolBar>
+    </zhijian.com.taobaobishe.widget.CNiaoToolBar>
 
 
 

@@ -61,7 +61,7 @@
                 android:layout_gravity="right"
                 />
 
-           <cniao5.com.cniao5shop.widget.NumberAddSubView
+           <zhijian.com.taobaobishe.widget.NumberAddSubView
                android:id="@+id/num_control"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/bg_color">
 
-    <cniao5.com.cniao5shop.widget.CNiaoToolBar
+    <zhijian.com.taobaobishe.widget.CNiaoToolBar
         android:id="@id/toolbar"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
@@ -88,7 +88,7 @@
             <View
                 style="@style/line_horizontal"/>
 
-            <cniao5.com.cniao5shop.widget.ClearEditText
+            <zhijian.com.taobaobishe.widget.ClearEditText
                 android:id="@+id/edittxt_phone"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -130,7 +130,7 @@
             <View
                 style="@style/line_horizontal"/>
 
-            <cniao5.com.cniao5shop.widget.ClearEditText
+            <zhijian.com.taobaobishe.widget.ClearEditText
                 android:id="@+id/edittxt_pwd"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

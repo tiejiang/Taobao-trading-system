@@ -8,7 +8,7 @@
 
 
 
-    <cniao5.com.cniao5shop.widget.CNiaoToolBar
+    <zhijian.com.taobaobishe.widget.CNiaoToolBar
         android:id="@id/toolbar"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
