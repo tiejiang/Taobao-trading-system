@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:drawableLeft="@drawable/icon_telphone_32"
             android:drawablePadding="20dp"
-            android:hint="请输入手机号码"
+            android:hint="请输入用户名"
             android:inputType="phone" />
 
         <View style="@style/line_vertical" />
