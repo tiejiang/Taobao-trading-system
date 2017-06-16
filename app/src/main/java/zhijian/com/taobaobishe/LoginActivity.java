@@ -106,10 +106,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 }else {
 //                    saveUserMsg(username, pwd);
                     //登陆条件符合 进入主界面
-                    Intent intent = new Intent();
-                    intent.setClass(LoginActivity.this, MainActivity.class);
-                    startActivity(intent);
-                    finish();
+//                    Intent intent = new Intent();
+//                    intent.setClass(LoginActivity.this, MainActivity.class);
+//                    startActivity(intent);
+//                    finish();
                 }
             }
         }else {
@@ -147,16 +147,21 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         params.put("password",password);
 
 
-        okHttpHelper.post(primitiveUrl, params, new SpotsCallBack<List<Order>>(this) {
+        okHttpHelper.post(primitiveUrl, params, new SpotsCallBack<List<Order>>(this)  {
             @Override
             public void onSuccess(Response response, List<Order> orders) {
 //                showOrders(orders);
-                Log.d("TIEJIANG", "onSuccess response: "+response.toString());
+                    Log.d("TIEJIANG", "onSuccess response: "+response.toString());
                 Log.d("TIEJIANG", "orders= " + orders.get(0));
-                if (response.toString().contains("success")){
-                    Toast.makeText(LoginActivity.this, "登陆成功", Toast.LENGTH_SHORT).show();
-//                    isSuccess = true;
-                }
+                    if (response.toString().contains("success")){
+                        Log.d("TIEJIANG", "登陆成功");
+                        Intent intent = new Intent();
+                        //把返回数据存入Intent
+                        intent.putExtra("result", "My name is linjiqin");
+                        //设置返回数据
+                        LoginActivity.this.setResult(1, intent);
+                        LoginActivity.this.finish();
+                    }
             }
 
             @Override
@@ -169,6 +174,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 }
             }
         });
-        return isSuccess;
+        return true;
     }
 }

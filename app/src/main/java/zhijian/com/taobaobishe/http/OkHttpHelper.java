@@ -113,7 +113,7 @@ public class OkHttpHelper {
 
                         Log.d("TIEJIANG", "result=" + resultStr);
                         if (resultStr.contains("success")){
-                            callbackSuccess(callback,response,null);
+                            callbackSuccess(callback,response,resultStr);
                             return;
                         }else if (resultStr.contains("error")){
                             callback.onError(response,response.code(),null);

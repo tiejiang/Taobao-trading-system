@@ -4,16 +4,19 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 import com.squareup.picasso.Picasso;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import zhijian.com.taobaobishe.AddressListActivity;
 import zhijian.com.taobaobishe.CniaoApplication;
 import zhijian.com.taobaobishe.Contants;
@@ -22,7 +25,6 @@ import zhijian.com.taobaobishe.MyFavoriteActivity;
 import zhijian.com.taobaobishe.MyOrderActivity;
 import zhijian.com.taobaobishe.R;
 import zhijian.com.taobaobishe.bean.User;
-import de.hdodenhof.circleimageview.CircleImageView;
 
 
 public class MineFragment extends BaseFragment{
@@ -32,15 +34,18 @@ public class MineFragment extends BaseFragment{
     @ViewInject(R.id.img_head)
     private CircleImageView mImageHead;
 
-    @ViewInject(R.id.txt_username)
     private TextView mTxtUserName;
+//    private TextView mTxtUserName;
 
     @ViewInject(R.id.btn_logout)
     private Button mbtnLogout;
 
     @Override
     public View createView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_mine,container,false);
+        View mView = inflater.inflate(R.layout.fragment_mine,container,false);
+        mTxtUserName = (TextView)mView.findViewById(R.id.txt_username);
+
+        return mView;
     }
 
     @Override
@@ -104,7 +109,15 @@ public class MineFragment extends BaseFragment{
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
+//        Log.d("TIEJIANG", "login success" + data.getExtras().get("result"));
+        Log.d("TIEJIANG", "login success");
+        mImageHead.setImageResource(R.drawable.login_success);
+        mTxtUserName.setVisibility(View.GONE);
+        switch (resultCode){
+            case 1:
+                Toast.makeText(getActivity(), "登录成功", Toast.LENGTH_SHORT).show();
+//                Log.d("TIEJIANG", "login success");
+        }
         showUser();
     }
 }
