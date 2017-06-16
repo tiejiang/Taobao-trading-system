@@ -144,7 +144,7 @@ public class MyOrderActivity extends BaseActivity implements TabLayout.OnTabSele
 
     private void showOrders(List<Order> orders){
 
-        if(mAdapter ==null) {
+        if(mAdapter == null) {
             mAdapter = new MyOrderAdapter(this,orders);
             mRecyclerview.setAdapter(mAdapter);
             mRecyclerview.setLayoutManager(new LinearLayoutManager(this));

@@ -1,9 +1,12 @@
 package zhijian.com.taobaobishe;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,16 +14,15 @@ import android.widget.Toast;
 
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
+import com.squareup.okhttp.Response;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-
-
+import zhijian.com.taobaobishe.bean.Order;
 import zhijian.com.taobaobishe.http.OkHttpHelper;
-import zhijian.com.taobaobishe.utils.Utils;
+import zhijian.com.taobaobishe.http.SpotsCallBack;
 import zhijian.com.taobaobishe.widget.CNiaoToolBar;
 import zhijian.com.taobaobishe.widget.ClearEditText;
 
@@ -37,6 +39,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private ClearEditText mEtxtPwd;
     private Button mLoginButton ;
     private boolean isConnect;
+    public static String primitiveUrl = "http://192.168.10.241/web/php/"+"login.php";
 
 
     private OkHttpHelper okHttpHelper = OkHttpHelper.getInstance();
@@ -52,6 +55,18 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         pwdEditText = (EditText)findViewById(R.id.etxt_pwd);
         mLoginButton = (Button)findViewById(R.id.btn_login);
         mLoginButton.setOnClickListener(this);
+
+        //检查网络状态
+        ConnectivityManager con=(ConnectivityManager)getSystemService(Activity.CONNECTIVITY_SERVICE);
+        boolean wifi=con.getNetworkInfo(ConnectivityManager.TYPE_WIFI).isConnectedOrConnecting();
+        boolean internet=con.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).isConnectedOrConnecting();
+        if(wifi|internet){
+            //执行相关操作
+            isConnect = true;
+        }else{
+            Toast.makeText(getApplicationContext(),  "请检查网络连接", Toast.LENGTH_LONG).show();
+            isConnect = false;
+        }
 
         findViewById(R.id.txt_toReg).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,67 +138,37 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
     // 请求服务端 获得响应
     private boolean queryForHttpPost(String account, String password){
-        DefaultHttpClient mHttpClient = new DefaultHttpClient();
-        HttpPost mPost = new HttpPost(Utils.primitiveUrl+"login.php");
-        List<BasicNameValuePair> pairs = new ArrayList<BasicNameValuePair>();
-        pairs.add(new BasicNameValuePair("username", account));
-        pairs.add(new BasicNameValuePair("password", password));
+        boolean isSuccess = false;
+//        Long userId = CniaoApplication.getInstance().getUser().getId();
 
-        try {
-            mPost.setEntity(new UrlEncodedFormEntity(pairs, HTTP.UTF_8));
-        } catch (UnsupportedEncodingException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        try {
-            HttpResponse response = mHttpClient.execute(mPost);
-            int res = response.getStatusLine().getStatusCode();
+        Map<String, Object> params = new HashMap<>();
+        Log.d("TIEJIANG", "account= " + account + " password= " + password);
+        params.put("username",account);
+        params.put("password",password);
 
-            if (res == 200) {
-                HttpEntity entity = response.getEntity();
 
-                if (entity != null) {
-                    String info = EntityUtils.toString(entity);
-                    System.out.println("服务端返回数据info-----------"+info);
-                    //以下主要是对服务器端返回的数据进行解析
-                    JSONObject jsonObject=null;
-                    //flag为登录成功与否的标记,从服务器端返回的数据
-                    String flag="";
-                    String name="";
-                    String userid="";
-                    try {
-                        jsonObject = new JSONObject(info);
-                        flag = jsonObject.getString("flag");
-                        name = jsonObject.getString("name");
-                        userid = jsonObject.getString("userid");
-
-                        System.out.println("falg:" + flag);
-                        System.out.println("name:" + name);
-                        System.out.println("userid:" + userid);
-
-                    } catch (JSONException e) {
-                        // TODO Auto-generated catch block
-                        e.printStackTrace();
-                    }
-                    //根据服务器端返回的标记,判断服务端端验证是否成功
-                    if(flag.equals("success")){
-                        return true;
-                    }
-                    else{
-                        return false;
-                    }
-                }
-                else{
-                    return false;
+        okHttpHelper.post(primitiveUrl, params, new SpotsCallBack<List<Order>>(this) {
+            @Override
+            public void onSuccess(Response response, List<Order> orders) {
+//                showOrders(orders);
+                Log.d("TIEJIANG", "onSuccess response: "+response.toString());
+                Log.d("TIEJIANG", "orders= " + orders.get(0));
+                if (response.toString().contains("success")){
+                    Toast.makeText(LoginActivity.this, "登陆成功", Toast.LENGTH_SHORT).show();
+//                    isSuccess = true;
                 }
             }
-        } catch (ClientProtocolException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        return false;
+
+            @Override
+            public void onError(Response response, int code, Exception e) {
+                Log.d("TIEJIANG", "onError response: "+response.toString());
+                Log.d("TIEJIANG", "code: "+code);
+                if (response.toString().contains("error")){
+                    Toast.makeText(LoginActivity.this, "登陆失败", Toast.LENGTH_SHORT).show();
+//                    isSuccess = false;
+                }
+            }
+        });
+        return isSuccess;
     }
 }

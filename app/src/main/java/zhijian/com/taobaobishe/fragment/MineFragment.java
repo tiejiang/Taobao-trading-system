@@ -53,7 +53,8 @@ public class MineFragment extends BaseFragment{
     private  void showUser(){
 
         User user = CniaoApplication.getInstance().getUser();
-        if(user ==null){
+//        if(user ==null){
+        if(user == null){
             mbtnLogout.setVisibility(View.GONE);
             mTxtUserName.setText(R.string.to_login);
 

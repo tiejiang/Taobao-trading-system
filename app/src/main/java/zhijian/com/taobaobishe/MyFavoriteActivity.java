@@ -62,9 +62,6 @@ public class MyFavoriteActivity extends Activity {
         });
     }
 
-
-
-
     private void getFavorites(){
 
         Long userId = CniaoApplication.getInstance().getUser().getId();

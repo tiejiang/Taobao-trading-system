@@ -111,7 +111,14 @@ public class OkHttpHelper {
 
                         String resultStr = response.body().string();
 
-                        Log.d(TAG, "result=" + resultStr);
+                        Log.d("TIEJIANG", "result=" + resultStr);
+                        if (resultStr.contains("success")){
+                            callbackSuccess(callback,response,null);
+                            return;
+                        }else if (resultStr.contains("error")){
+                            callback.onError(response,response.code(),null);
+                            return;
+                        }
 
                         if (callback.mType == String.class){
                             callbackSuccess(callback,response,resultStr);
