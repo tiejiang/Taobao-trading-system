@@ -37,10 +37,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private ClearEditText mEtxtPhone;
     @ViewInject(R.id.etxt_pwd)
     private ClearEditText mEtxtPwd;
-    private Button mLoginButton ;
+    private Button mLoginButton;
     private boolean isConnect;
-    public static String primitiveUrl = "http://192.168.10.241/web/php/"+"login.php";
-
+//    public static String primitiveUrl = "http://192.168.10.241/web/php/"+"login.php";
+public static String primitiveUrl = "http://192.168.2.107/web/php/"+"login.php";
 
     private OkHttpHelper okHttpHelper = OkHttpHelper.getInstance();
 
